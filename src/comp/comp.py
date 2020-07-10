@@ -26,20 +26,20 @@ humans = [
 print("Starts with D:")
 # going to look at the names and attempt to split their letters of their names to get the first letter
 # if the first item is 'D', return it
-a = []
-for n in humans:
-    if n.name[0] == "D":
-        a.append(n.name)
+a = [n.name for n in humans if n.name[0] == "D"]
+# for n in humans:
+#     if n.name[0] == "D":
+#         a.append(n.name)
 print(a)
 
 # Write a list comprehension that creates a list of names of everyone
 # whose name ends in "e".
 print("Ends with e:")
 # check the last letter of their name using a negative index to see if it matches the letter e
-b = []
-for e in humans:
-    if e.name[-1] == 'e':
-        b.append(e.name)
+b = [e.name for e in humans if e.name[-1] == 'e']
+# for e in humans:
+#     if e.name[-1] == 'e':
+#         b.append(e.name)
 print(b)
 
 # Write a list comprehension that creates a list of names of everyone
@@ -48,11 +48,13 @@ print("Starts between C and G, inclusive:")
 # if the letters are between c and g, append it to c
 # looks like i'll be bringing in a string dependency
 import string
+filler = sorted([e.name for e in humans])
 c = []
-for letter in (string.ascii_uppercase[2:7]):
-    for name in humans:
-        if name.name[0] == letter:
-            c.append(name.name)
+c = [[name for name in filler if name[0] == letter] for letter in string.ascii_uppercase[2:7]]
+# for letter in string.ascii_uppercase[2:7]:
+#     for name in filler:
+#         if name[0] == letter:
+#             c.append(name)
 
 print(c)
 
@@ -74,10 +76,11 @@ print(e)
 # age, for example ("David", 31), for everyone between the ages of 27 and 32,
 # inclusive.
 print("Names and ages between 27 and 32:")
-f = []
-for p in humans:
-    if 27 < p.age > 32:
-        f.append((p.name, p.age))
+f = [(p.name, p.age) for p in humans if p.age >= 27 and p.age <= 32]
+# f = []
+# for p in humans:
+#     if p.age >= 27 and p.age <= 32:
+#         f.append((p.name, p.age))
 print(f)
 
 # Write a list comprehension that creates a list of new Humans like the old
@@ -86,8 +89,7 @@ print(f)
 print("All names uppercase:")
 # for each human in humans, I want to return human.name uppercased
 # and add 5 to their age. Making uppercased names ages you.
-g = [hum.name.upper() + ', ' + str(hum.age + 5) for hum in humans]
-
+g = [Human(hum.name.upper(), int(hum.age + 5)) for hum in humans]
 print(g)
 
 # Write a list comprehension that contains the square root of all the ages.
