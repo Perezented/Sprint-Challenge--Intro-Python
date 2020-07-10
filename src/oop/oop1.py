@@ -20,6 +20,17 @@
 
 
 # looks like a VEHICLE is the main parent class for all of the following classes
+
+
+# class Vehicle:
+#     def __init__(self, name):
+#         self.name = name
+# class FlightVehicle(Vehicle):
+#     def __init__(self, name):
+#         super().__init__(name)
+    
+
+
 class Vehicle:
     def __init__(self, name, vehicleType):
         self.name = name
@@ -28,8 +39,6 @@ class Vehicle:
 class FlightVehicle(Vehicle):
     def __init__(self, name, vehicleType):
         super().__init__(name, vehicleType)
-
-
 # which in turn has two subclasses below that
 # STARSHIP branched off of FlightVehicle
 class Starship(FlightVehicle):
@@ -46,6 +55,8 @@ class Airplane(FlightVehicle):
 class GroundVehicle(Vehicle):
     def __init__(self, name, vehicleType):
         super().__init__(name, vehicleType)
+
+
 # Car and Motorcycle branch off of a GroundVehicle
 # CAR
 class Car(GroundVehicle):
@@ -54,7 +65,7 @@ class Car(GroundVehicle):
         self.carType = carType
 
 # MOTORCYCLE
-class Car(GroundVehicle):
+class Motorcycle(GroundVehicle):
     def __init__(self, name, vehicleType, motorcycleType):
         super().__init__(name, vehicleType)
         self.motorcycleType = motorcycleType
