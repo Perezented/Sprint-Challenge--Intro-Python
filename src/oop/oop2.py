@@ -1,13 +1,27 @@
-# To the GroundVehicle class, add method drive() that returns "vroooom".
 #
-# Also change it so the num_wheels defaults to 4 if not specified when the
 # object is constructed.
 
 class GroundVehicle():
-    def __init__(self, num_wheels):
+# Also change it so the num_wheels defaults to 4 if not specified when the
+    def __init__(self, num_wheels = 4):
         self.num_wheels = num_wheels
 
-    # TODO
+# To the GroundVehicle class, add method drive() that returns "vroooom".
+    # adding a method called drive to return the phrase 'vroooom'
+    def drive(self):
+        return "vroooom"
+
+
+
+# making another Motorcycle class that starts with 2 wheels instead of 4
+# GroundVehicle is the parent class
+
+# MOTORCYCLE
+class Motorcycle(GroundVehicle):
+    def __init__(self, num_wheels = 2):
+        super().__init__(num_wheels)
+        def drive(self):
+            return "BRAAAP!!"
 
 
 # Subclass Motorcycle from GroundVehicle.
